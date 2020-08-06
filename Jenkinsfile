@@ -9,7 +9,7 @@ pipeline
       steps
       {
         echo "[Step] Building..."
-        bat "2dotnet restore src/HelloWorld/HelloWorld.csproj"
+        bat "dotnet restore src/HelloWorld/HelloWorld.csproj"
         bat "dotnet clean src/HelloWorld/HelloWorld.csproj"
         bat "dotnet build src/HelloWorld/HelloWorld.csproj"
         archiveArtifacts artifacts: "src/HelloWorld/bin/**"
