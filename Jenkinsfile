@@ -26,9 +26,18 @@ pipeline
 
     stage("deploy")
     {
+      when
+      {
+        expression
+        {
+          currentBuild.result == null || currentBuild.result == "SUCCESS"
+        }
+      }
+      
       steps
       {
         echo "[Step] Deploying..."
+        bat "xcopy .\\src\\HelloWorld\\bin\\Debug\\netcoreapp3.1 c:\\demo\\HelloWorld /SIY"
       }
     }
   }
