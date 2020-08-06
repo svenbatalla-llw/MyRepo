@@ -8,7 +8,7 @@ pipeline
     {
       steps
       {
-        echo "[Step] Building..."
+        echo "[Step (build: ${env.BUILD_NUMBER})] Building..."
         bat "dotnet restore src/HelloWorld/HelloWorld.csproj"
         bat "dotnet clean src/HelloWorld/HelloWorld.csproj"
         bat "dotnet build src/HelloWorld/HelloWorld.csproj"
@@ -20,7 +20,7 @@ pipeline
     {
       steps
       {
-        echo "[Step] Testing..."
+        echo "[Step (build: ${env.BUILD_NUMBER})] Testing..."
       }
     }
 
@@ -36,8 +36,8 @@ pipeline
       
       steps
       {
-        echo "[Step] Deploying..."
-        bat "xcopy .\\src\\HelloWorld\\bin\\Debug\\netcoreapp3.1 c:\\demo\\HelloWorld /SIY"
+        echo "[Step (build: ${env.BUILD_NUMBER})] Deploying..."
+        bat "xcopy .\\src\\HelloWorld\\bin\\Debug\\netcoreapp3.1 c:\\demo\\HelloWorld_${env.BUILD_NUMBER} /SIY"
       }
     }
   }
