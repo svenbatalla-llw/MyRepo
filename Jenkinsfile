@@ -31,13 +31,5 @@ pipeline
         echo "[Step] Deploying..."
       }
     }
-    
-    post
-    {
-      failure
-      {
-        echo "The build has failed! Call someone!"
-      }
-    }
   }
 }
