@@ -9,7 +9,7 @@ pipeline
       steps
       {
         echo "[Step] Building..."
-        bat "dotnet restore src/HelloWorld/HelloWorld.csproj"
+        bat "2dotnet restore src/HelloWorld/HelloWorld.csproj"
         bat "dotnet clean src/HelloWorld/HelloWorld.csproj"
         bat "dotnet build src/HelloWorld/HelloWorld.csproj"
         archiveArtifacts artifacts: "src/HelloWorld/bin/**"
@@ -30,6 +30,14 @@ pipeline
       {
         echo "[Step] Deploying..."
       }
+    }
+  }
+  
+  post
+  {
+    failure
+    {
+      echo "The build has failed! Call someone!"
     }
   }
 }
